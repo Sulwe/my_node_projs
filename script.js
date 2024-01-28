@@ -11,7 +11,7 @@ function Book(title, author, pages, read, isRead, info) {
         }
     };
     this.info = function() {
-        console.log(`${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead()}.`);
+        return (`${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead()}.`);
     };
 
 };

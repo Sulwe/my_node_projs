@@ -4,7 +4,7 @@ function Book(title, author, pages, read, isRead, info) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.isRead = function() {
+    /*this.isRead = function() {
         if (this.read === true) {
             return "is read";
         } else {
@@ -13,7 +13,7 @@ function Book(title, author, pages, read, isRead, info) {
     };
     this.info = function() {
         return (`${this.title} by ${this.author}, ${this.pages} pages, ${this.isRead()}.`);
-    };
+    };*/
 
 };
 
@@ -34,3 +34,47 @@ function addBookToLibrary() {
     console.table(myLibrary);
 
 };
+
+function createTable(tableData) {
+
+    const headers = Object.keys(myLibrary[0]);
+
+    const table = document.getElementById('books');
+    const headerRow = document.createElement('tr');
+
+    headers.forEach(headerText => {
+        const header = document.createElement('th');
+        const textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+
+    table.appendChild(headerRow);
+
+    myLibrary.forEach(book => {
+        const row = document.createElement('tr');
+
+        Object.values(book).forEach(text => {
+            const cell = document.createElement('td');
+            const textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+        const btn = document.createElement('button');
+        btn.textContent = 'Delete';
+        btn.classList.add('delete');
+        row.appendChild(btn);
+        btn.onclick = 'deleteRow()';
+        table.appendChild(row);
+    });
+
+    function deleteRow() {
+
+        btn.parentNode.parentNode.remove();
+    }
+
+    
+
+ 
+}
+

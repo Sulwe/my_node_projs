@@ -21,11 +21,14 @@ const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
 
 
 function addBookToLibrary() {
-
-        title = prompt('Please Enter Book Title: ');
-        author = prompt('Please Enter the Author');
-        pages = prompt('Please Enter The Pages');
-        let sRead = prompt('Have You Read The Book? true/false');
+    const bookTitle = document.getElementById('title');
+    title = bookTitle.value;
+    const bookAuthor = document.getElementById('author');
+    author = bookAuthor.value;
+    const bookPages = document.getElementById('pages');
+    pages = parseInt(bookPages.value);
+    const bookRead = document.getElementById('read');
+        let sRead = bookRead.value;
         isRead = (sRead.toLowerCase() === 'true');
 
         let addedBook = new Book(title, author, pages, isRead);
@@ -40,6 +43,7 @@ function createTable(tableData) {
     const headers = Object.keys(myLibrary[0]);
 
     const table = document.getElementById('books');
+    table.innerHTML = '';
     const headerRow = document.createElement('tr');
 
     headers.forEach(headerText => {
@@ -76,4 +80,8 @@ function createTable(tableData) {
 
  
 }
+
+function resetForm() {
+    document.getElementById("addbook").reset();
+  }
 

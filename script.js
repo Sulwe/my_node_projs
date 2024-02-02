@@ -66,12 +66,11 @@ function createTable(tableData) {
         row.appendChild(btn);
         btn.onclick = 'deleteRow()';
         table.appendChild(row);
+
+        btn.addEventListener('click', () => {
+            table.removeChild(row);
+        })
     });
-
-    function deleteRow() {
-
-        btn.parentNode.parentNode.remove();
-    }
 
     
 
